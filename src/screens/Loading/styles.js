@@ -1,27 +1,19 @@
-import React, {useEffect} from 'react';
-import {StatusBar, ActivityIndicator} from 'react-native';
-import * as firebase from 'firebase';
+import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import styled from 'styled-components';
 
-import {Container, Text} from './styles';
+export const Container = styled.View`
+  flex: 1;
+  background: #fff;
+  padding-top: ${getStatusBarHeight()}px;
+  justify-content: center;
+  align-items: center;
+`;
 
-export default function Loading(props) {
-  useEffect(() => {
-    setTimeout(() => {
-      firebase
-        .auth()
-        .onAuthStateChanged(user =>
-          props.navigation.navigate(user ? 'App' : 'Auth'),
-        );
-    }, 500);
-  });
-
-  return (
-    <>
-      <StatusBar barStyle="light-content" backgroundColor="#787B8A" />
-      <Container>
-        <Text>Loading Screen</Text>
-        <ActivityIndicator size="large" />
-      </Container>
-    </>
-  );
-}
+export const Text = styled.Text`
+  color: #ccc;
+  font-size: 24px;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+`;
