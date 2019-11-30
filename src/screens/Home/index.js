@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import * as firebase from 'firebase';
 
-import {Container, Text, TouchableOpacity} from './styles';
+import {
+  Container,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityText,
+} from './styles';
 
 export default function Home() {
   const [profile, setProfile] = useState({
@@ -25,13 +30,13 @@ export default function Home() {
   });
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#787B8A" />
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <Container>
         <Text>{profile.email}</Text>
         <Text>{profile.displayName}</Text>
 
         <TouchableOpacity onPress={signOutUser}>
-          <Text>Logout</Text>
+          <TouchableOpacityText>Logout</TouchableOpacityText>
         </TouchableOpacity>
       </Container>
     </>
